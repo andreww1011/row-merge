@@ -14,11 +14,11 @@
   <table>
     <tr>
       <td>
-        <img src="./screenshot2.png" width="401" title="screenshot2"/>
+        <img src="./screenshot1.png" width="401" title="screenshot1"/>
         <p><sub><i>original</i></sub></p>
       </td>
       <td>
-        <img src="./screenshot3.png" width="401" title="screenshot1"/>
+        <img src="./screenshot2.png" width="401" title="screenshot2"/>
         <p><sub><i>merged (exclude merging column 4)</i></sub></p>
       </td>
     </tr>
