@@ -201,7 +201,7 @@
         };
 
         class_2.prototype.matches = function (other) {
-          return this.matcher.isMatch(this.getCell(), other.getCell());
+          return this.matcher(this.getCell(), other.getCell());
         };
 
         return class_2;
@@ -231,17 +231,10 @@
      */
 
     $__default['default'].fn.rowMerge = function (args) {
-      var MATCH_TEXT_ONLY = new (
-      /** @class */
-      function () {
-        function class_1() {}
+      var MATCH_TEXT_ONLY = function (value, other) {
+        return value.textContent == other.textContent;
+      };
 
-        class_1.prototype.isMatch = function (value, other) {
-          return value.textContent == other.textContent;
-        };
-
-        return class_1;
-      }())();
       var target = this; // merge the global options with the per-call options.
 
       args = $__default['default'].extend({}, $__default['default'].fn.rowMerge.args, args); // factory defaults

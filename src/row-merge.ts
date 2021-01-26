@@ -25,10 +25,8 @@ import RowMerge from './RowMerge';
 // define the plugin function on the jQuery extension point.
 ($.fn as any).rowMerge = function (this: JQuery, args: Args): any {
     
-    const MATCH_TEXT_ONLY = new class implements Matcher<HTMLTableCellElement> {
-        isMatch(value: HTMLTableCellElement, other: HTMLTableCellElement): boolean {
+    const MATCH_TEXT_ONLY = function(this: void, value: HTMLTableCellElement, other: HTMLTableCellElement): boolean {
             return value.textContent == other.textContent;
-        }
     }
     
     let target = this;

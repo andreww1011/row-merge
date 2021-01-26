@@ -18,7 +18,7 @@
  *  USA
  */
 interface Args {
-    matcher: Matcher<HTMLTableCellElement>;
+    matcher: (value:HTMLTableCellElement, other:HTMLTableCellElement) => boolean;
     excludedColumns: Array<number>;
     zeroIndexed: boolean;
 }

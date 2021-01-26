@@ -21,14 +21,9 @@ import $ from 'jquery';
 import RowMerge from './RowMerge';
 // define the plugin function on the jQuery extension point.
 $.fn.rowMerge = function (args) {
-    var MATCH_TEXT_ONLY = new /** @class */ (function () {
-        function class_1() {
-        }
-        class_1.prototype.isMatch = function (value, other) {
-            return value.textContent == other.textContent;
-        };
-        return class_1;
-    }());
+    var MATCH_TEXT_ONLY = function (value, other) {
+        return value.textContent == other.textContent;
+    };
     var target = this;
     // merge the global options with the per-call options.
     args = $.extend({}, $.fn.rowMerge.args, args);

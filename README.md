@@ -45,7 +45,7 @@
 # Options
 <p>The following indexed parameters can be passed to <code>rowMerge()</code> at construction.
   <ul>
-    <li><code>matcher</code> - a function of the form <code>function(a: HTMLTableCellElement, b: HTMLTableCellElement) => boolean</code> that accepts two <code>HTMLTableCellElement</code> arguments and returns true if they "match", otherwise returns false.  The implementation is up to the user.  Adjacent rows with identical <code>colspan</code> that "match" will be merged.  <i>default behavior: test cell text for equality.</i></li>
+    <li><code>matcher</code> - a function of the form <code>function(thisCell: HTMLTableCellElement, otherCell: HTMLTableCellElement) => boolean</code> that accepts two <code>HTMLTableCellElement</code> arguments and returns true if they "match", otherwise returns false.  The implementation is up to the user.  Adjacent rows with identical <code>colspan</code> that "match" will be merged into <code>thisCell</code>.  <i>default behavior: test cell text for equality.</i></li>
     <li><code>excludedColumns</code> - column indicies to exclude from merging.  <i>default=[]</i></li>
     <li><code>zeroIndexed</code> - whether columns are zero-indexed or not.  <i>default=false</i></li>
   </ul>
