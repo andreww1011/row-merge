@@ -142,7 +142,7 @@ var RowMerge = /** @class */ (function () {
         class_2.prototype.columnAddress = function () { return this.col; };
         class_2.prototype.width = function () { return this.w; };
         class_2.prototype.getCell = function () { return this.cell; };
-        class_2.prototype.matches = function (other) { return this.matcher.isMatch(this.getCell(), other.getCell()); };
+        class_2.prototype.matches = function (other) { return this.matcher(this.getCell(), other.getCell()); };
         return class_2;
     }());
     return RowMerge;
