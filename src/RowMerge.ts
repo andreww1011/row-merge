@@ -32,9 +32,9 @@ export default class RowMerge {
         private col: number;
         private w: number;
         private cell: HTMLTableCellElement;
-        private matcher: Matcher<HTMLTableCellElement>;
+        private matcher: (this:void, value: HTMLTableCellElement, other:HTMLTableCellElement) => boolean;
 
-        constructor(column: number, width: number, cell:HTMLTableCellElement, matcher: Matcher<HTMLTableCellElement>) {
+        constructor(column: number, width: number, cell:HTMLTableCellElement, matcher: (this:void, value: HTMLTableCellElement, other:HTMLTableCellElement) => boolean) {
             this.col = column;
             this.w = width;
             this.cell = cell;
@@ -43,7 +43,7 @@ export default class RowMerge {
         columnAddress(): number {return this.col;}
         width(): number {return this.w;}
         getCell(): HTMLTableCellElement {return this.cell;}
-        matches(other: Cell): boolean {return this.matcher.isMatch(this.getCell(),other.getCell());}
+        matches(other: Cell): boolean {return this.matcher(this.getCell(),other.getCell());}
     }
 
     private origTable: HTMLTableElement;
@@ -59,7 +59,7 @@ export default class RowMerge {
         this.mergeTable = RowMerge.merge(t, args.matcher, exc);
     }
 
-    private static merge(table: HTMLTableElement, matcher: Matcher<HTMLTableCellElement>, excludedColumns: Array<number>): HTMLTableElement {
+    private static merge(table: HTMLTableElement, matcher: (this:void, value: HTMLTableCellElement, other:HTMLTableCellElement) => boolean, excludedColumns: Array<number>): HTMLTableElement {
         let t:HTMLTableElement = <HTMLTableElement>table.cloneNode(true);
         let s:HTMLCollectionOf<HTMLTableSectionElement> = t.tBodies;
         for (let i = 0; i < s.length; i++) {
@@ -69,7 +69,7 @@ export default class RowMerge {
         return t;
     }
 
-    private static mergeSection(section: HTMLTableSectionElement, matcher: Matcher<HTMLTableCellElement>, excludedColumns: Array<number>): void {
+    private static mergeSection(section: HTMLTableSectionElement, matcher: (this:void, value: HTMLTableCellElement, other:HTMLTableCellElement) => boolean, excludedColumns: Array<number>): void {
         let rows: HTMLCollectionOf<HTMLTableRowElement> = section.rows;
         if (rows.length == 0) {
             return;
@@ -133,7 +133,7 @@ export default class RowMerge {
         }
     }
 
-    private static createCells(cells: HTMLCollectionOf<HTMLTableCellElement>, matcher: Matcher<HTMLTableCellElement>): Array<Cell> {
+    private static createCells(cells: HTMLCollectionOf<HTMLTableCellElement>, matcher: (this:void, value: HTMLTableCellElement, other:HTMLTableCellElement) => boolean): Array<Cell> {
         let a: Array<Cell> = new Array(cells.length);
         for (let i = 0, col = 0; i < cells.length; i++) {
             let c:HTMLTableCellElement = cells.item(i);
