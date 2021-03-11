@@ -1,6 +1,6 @@
 {
   "name": "row-merge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Merge identical table rows jQuery plugin.",
   "scripts": {
     "clean": "rimraf dist && rimraf coverage",
