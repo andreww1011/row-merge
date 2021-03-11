@@ -51,6 +51,18 @@ $.fn.rowMerge = function (args) {
         target = t;
     }
 };
+// activate plugin by targeting selector
+$(function () {
+    // factory defaults
+    var selector = typeof $.fn.rowMerge.selector === 'undefined' ? 'table.row-merge' : $.fn.rowMerge.selector;
+    // target
+    var s = $(selector);
+    s.each(function (i, e) {
+        $(e).rowMerge();
+    });
+});
+// define the plugin's global default selector.
+$.fn.rowMerge.selector = undefined;
 // define the plugin's global default options.
 $.fn.rowMerge.args = {};
 //# sourceMappingURL=row-merge.js.map

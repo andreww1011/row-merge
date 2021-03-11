@@ -20,8 +20,6 @@
 import $ from 'jquery';
 import RowMerge from './RowMerge';
 
-
-
 // define the plugin function on the jQuery extension point.
 ($.fn as any).rowMerge = function (this: JQuery, args: Args): any {
     
@@ -57,6 +55,20 @@ import RowMerge from './RowMerge';
         target = t;
     }
 };
+
+// activate plugin by targeting selector
+$(function () {
+    // factory defaults
+    let selector: string = typeof ($.fn as any).rowMerge.selector === 'undefined' ? 'table.row-merge' : ($.fn as any).rowMerge.selector;
+    // target
+    let s: JQuery<HTMLElement> = $(selector);
+    s.each((i,e) => {
+        ($(e) as any).rowMerge();
+    });
+});
+
+// define the plugin's global default selector.
+($.fn as any).rowMerge.selector = undefined;
 
 // define the plugin's global default options.
 ($.fn as any).rowMerge.args = {};

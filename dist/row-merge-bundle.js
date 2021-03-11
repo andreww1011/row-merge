@@ -259,8 +259,20 @@
         target.replaceWith(t);
         target = t;
       }
-    }; // define the plugin's global default options.
+    }; // activate plugin by targeting selector
 
+
+    $__default['default'](function () {
+      // factory defaults
+      var selector = typeof $__default['default'].fn.rowMerge.selector === 'undefined' ? 'table.row-merge' : $__default['default'].fn.rowMerge.selector; // target
+
+      var s = $__default['default'](selector);
+      s.each(function (i, e) {
+        $__default['default'](e).rowMerge();
+      });
+    }); // define the plugin's global default selector.
+
+    $__default['default'].fn.rowMerge.selector = undefined; // define the plugin's global default options.
 
     $__default['default'].fn.rowMerge.args = {};
 
