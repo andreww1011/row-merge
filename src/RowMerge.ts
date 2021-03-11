@@ -25,6 +25,13 @@ const NULL_CELL = new class implements Cell {
     matches(other: Cell) {return false;}
 }
 
+interface Cell {
+    columnAddress(): number;
+    width(): number;
+    getCell(): HTMLTableCellElement;
+    matches(other: Cell): boolean;
+}
+
 export default class RowMerge {
 
     private static SingleCell = class implements Cell {

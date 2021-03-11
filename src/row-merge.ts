@@ -20,8 +20,6 @@
 import $ from 'jquery';
 import RowMerge from './RowMerge';
 
-
-
 // define the plugin function on the jQuery extension point.
 ($.fn as any).rowMerge = function (this: JQuery, args: Args): any {
     
