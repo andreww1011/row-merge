@@ -39,6 +39,8 @@
     $('#table').rowMerge();
   });
 &lt/script&gt</code></pre></li>
+    <li>Or append the class <code>row-merge</code> to the table element and have it be targeted automatically.
+    <pre><code>&lttable <b>class="row-merge"</b> ...&gt</code></pre></li>
   </ol>
 </p>
 
@@ -51,11 +53,16 @@
   </ul>
 </p>
 
-# Methods
+# API
 <p>The following methods are exposed on the plugin:
   <ul>
     <li><code>unmerge()</code> - unmerges the table to original definition in HTML source.</li>
     <li><code>merge()</code> - applies this plug-in and replaces HTML in DOM.</li>
+  </ul>
+</p>
+<p>The following global field is exposed on the jQuery extension point:
+  <ul>
+    <li><code>$.fn.rowMerge.selector</code> - the selector string used to automatically target and apply the plugin. <i> default = "table.row-merge"</i></li>
   </ul>
 </p>
   
